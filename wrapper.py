@@ -45,6 +45,15 @@ class ElasticSearch(Resource):
     """
     def get(self):
         query = request.args.get('query')
+
+        url = "http://localhost:9200/repo-search/_search"
+        payload = "{\n    \"query\": {\n        \"bool\" : {\n            \"must\" : {\n                \"query_string\" : {\n                    \"query\" : \"UserInput\"\n                }\n            }\n        }\n    }\n}"
+        payload = payload.replace("UserInput", query)
+        print(payload)
+        response = requests.request("POST", url, data=payload)
+
+        print(response.text)
+
         return query, 200
 
     def delete(self):
