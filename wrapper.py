@@ -1,14 +1,3 @@
-# curl -X POST -H "Authorization: Basic Z2l0aHVidXNlcjpnaXRodWI=" -H "Cache-Control: no-cache" -H "Postman-Token: 843590f3-9ba3-1158-b39e-5e5800a593d0" -d '{
-#     "query": {
-#         "bool" : {
-#             "
-#                 "query_string" : {
-#                     "query" : "pascal"
-#                 }
-#             }
-#         }
-#     }
-# }' "http://ec2-34-199-166-215.compute-1.amazonaws.com:9200/repo-search/repo/_search"
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -16,7 +5,7 @@ import os
 import sys
 import gevent
 import json
-
+import requests
 import flask
 from flask import Flask,  request, jsonify, _app_ctx_stack
 
