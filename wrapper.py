@@ -43,7 +43,7 @@ class ElasticSearch(Resource):
 
         print(response.json())
 
-        return response,json(), 200
+        return response.json(), 200
 
     def delete(self):
         return '', 405
