@@ -41,9 +41,9 @@ class ElasticSearch(Resource):
         print(payload)
         response = requests.request("POST", url, data=payload)
 
-        print(response.json())
+        print(jsonify(response))
 
-        return response.json(), 200
+        return jsonify(response), 200
 
     def delete(self):
         return '', 405
