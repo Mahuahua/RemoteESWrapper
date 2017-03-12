@@ -11,6 +11,7 @@ from flask import Flask,  request, jsonify, _app_ctx_stack
 
 import flask_restful
 from flask_restful import abort, Api, Resource
+from flask_cors import CORS
 
 
 
@@ -59,6 +60,7 @@ class ElasticSearch(Resource):
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
 port = int(os.getenv("PORT", 8049))
 
 
