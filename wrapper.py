@@ -30,9 +30,6 @@ def handle_error(error, status_code):
     return resp
 
 class ElasticSearch(Resource):
-    """
-    1. <service root>/parse - parse a given sentence (examples below)
-    """
     def get(self):
         query = request.args.get('query')
 
