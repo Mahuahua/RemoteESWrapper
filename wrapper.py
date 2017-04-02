@@ -30,6 +30,9 @@ def handle_error(error, status_code):
     return resp
 
 class ElasticSearch(Resource):
+    """
+    Custom git repository search from remote ES
+    """
     def get(self):
         query = request.args.get('query')
 
