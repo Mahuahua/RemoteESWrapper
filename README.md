@@ -1,5 +1,5 @@
 # RemoteESWrapper
-Wrapper endpoint around the remote Elastic Search endpoints. Runs on port 8049
+Wrapper endpoint around the remote Elastic Search (mostly). Runs on port 8049
 
 First time
 ```
