@@ -69,7 +69,7 @@ class RepoSearch(Resource):
         url = url.replace("WTF", query)
         if searchIn:
             url = url + '+in:' + searchIn.strip()
-
+        url = url + "&sort=update&order=asc"
         response = requests.request("GET", url)
         jsonresponse = response.json()
         returnjson = {}
