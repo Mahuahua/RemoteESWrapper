@@ -77,7 +77,7 @@ class RepoSearch(Resource):
         hits = []
         for hit in jsonresponse.get('items'):
             repo = {}
-            repo['url'] = hit.get('url')
+            repo['url'] = hit.get('html_url')
             repo['name'] = hit.get('name')
             repo['description'] = hit.get('description')
             repo['updated_at'] = hit.get('updated_at')
