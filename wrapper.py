@@ -58,6 +58,45 @@ class ElasticSearch(Resource):
     def delete(self):
         return '', 405
 
+class RepoSearch(Resource):
+    """
+    Custom git repository search from remote ES
+    """
+    def get(self):
+        query = request.args.get('query')
+        searchIn = request.args.get('searchIn')
+        url = 'https://api.github.com/search/repositories?q=WTF+user:mahuahua'
+        url = url.replace("WTF", query)
+        if searchIn:
+            url = url + '+in:' + searchIn.strip()
+
+        response = requests.request("GET", url)
+        jsonresponse = response.json()
+        returnjson = {}
+        returnjson['hit_count'] = jsonresponse.get('total_count')
+        hits = []
+        for hit in jsonresponse.get('items'):
+            repo = {}
+            repo['url'] = hit.get('url')
+            repo['name'] = hit.get('name')
+            repo['description'] = hit.get('description')
+            repo['updated_at'] = hit.get('updated_at')
+            hits.append(repo)
+        returnjson['hits'] = hits
+        return returnjson, 200
+
+    def delete(self):
+        return '', 405
+
+    def put(self):
+        return '', 405
+
+    def post(self):
+        return '', 405
+
+    def delete(self):
+        return '', 405
+
 app = Flask(__name__)
 api = Api(app)
 CORS(app)
@@ -67,6 +106,7 @@ port = int(os.getenv("PORT", 8049))
 def bootstrap():
     # Define resources
     api.add_resource(ElasticSearch, '/es')
+    api.add_resource(RepoSearch, '/repo')
 
 if __name__ == '__main__':
     bootstrap()
