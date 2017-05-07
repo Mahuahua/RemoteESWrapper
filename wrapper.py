@@ -114,6 +114,9 @@ class RepoFileSearch(Resource):
             repoFile = {}
             repoFile['url'] = hit.get('html_url')
             repoFile['name'] = hit.get('name')
+            repoFile['repo'] = hit.get('repository').get('name')
+            repoFile['repoUrl'] = hit.get('repository').get('html_url')
+            repoFile['path'] = hit.get('path')
             hits.append(repoFile)
         returnjson['hits'] = hits
         return returnjson, 200
