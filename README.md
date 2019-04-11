@@ -1,17 +1,15 @@
 # RemoteServerWrapper
 Wrapper endpoint around the remote Elastic Search (mostly). Runs on port 8049
 
-First time
+Install the following in root
 ```
 sudo apt install virtualenv
 virtualenv venv
-```
-Then install
-```
+source venv/bin/activate
 pip install -r requirements.txt
 ```
-in root:
+
+The following command put up the server in the background
 ```
-source venv/bin/activate
 nohup python wrapper.py &
 ```
